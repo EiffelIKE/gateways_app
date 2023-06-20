@@ -53,6 +53,7 @@ export const GatewayForm: FC<GatewayFormprops> = ({
     control,
     name: 'devices', // unique name for your Field Array
   });
+
   return (
     <Card padding={8} marginTop={8} backgroundColor={cardBg}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -162,7 +163,10 @@ export const GatewayForm: FC<GatewayFormprops> = ({
                     <FormHelperText>Device UID</FormHelperText>
                   ) : (
                     <FormErrorMessage>
-                      {errors?.devices && errors?.devices[index].uid?.message}
+                      {errors?.devices &&
+                        errors?.devices[index] &&
+                        errors?.devices[index]?.uid &&
+                        errors?.devices[index]?.uid?.message}
                     </FormErrorMessage>
                   )}
                 </FormControl>
@@ -173,14 +177,20 @@ export const GatewayForm: FC<GatewayFormprops> = ({
                   register={register}
                   helpText="Device connection status"
                   errorMessage={
-                    errors?.devices && errors?.devices[index]?.status.message
+                    errors?.devices &&
+                    errors?.devices[index] &&
+                    errors?.devices[index]?.status &&
+                    errors?.devices[index]?.status?.message
                   }
                   options={options}
                 />
                 <TextControl
                   error={errors?.devices && !!errors?.devices[index]?.vendor}
                   errorMessage={
-                    errors?.devices && errors?.devices[index]?.vendor.message
+                    errors?.devices &&
+                    errors?.devices[index] &&
+                    errors?.devices[index]?.vendor &&
+                    errors?.devices[index]?.vendor?.message
                   }
                   label="Vendor:"
                   name={`devices.${index}.vendor`}

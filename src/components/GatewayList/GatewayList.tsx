@@ -11,7 +11,13 @@ export const GatewayList: FC<GatewayListProps> = ({
   onEdit,
 }) => {
   return (
-    <Stack spacing={8} direction="row" wrap="wrap" alignContent="center">
+    <Stack
+      spacing={8}
+      direction="row"
+      wrap="wrap"
+      alignContent="center"
+      justifyContent={{ base: 'center', sm: 'center', md: 'flex-start' }}
+    >
       {data.length > 0 ? (
         data.map((gateway, index) => {
           return (

@@ -6,7 +6,7 @@ export const DeviceSchema = z.object({
     .string()
     .min(1, 'This Field is required')
     .nonempty('This Field is required'),
-  created_at: z.date().default(new Date()).optional(),
+  created_at: z.string().optional(),
   status: z.string().refine((value) => {
     return value === 'offline' || value === 'online';
   }, 'Invalid status value'),
